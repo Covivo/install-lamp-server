@@ -10,36 +10,36 @@ Purple='\033[0;35m'       # Purple
 Cyan='\033[0;36m'         # Cyan
 
 echo -e "$Cyan \n Updating System.. $Color_Off"
-sudo apt -qq update
+sudo apt-get -qq update
 
 echo -e "$Cyan \n Install gcc.. you know to compile.. :p $Color_Off"
-sudo apt install gcc
-sudo apt install perl libnet-ssleay-perl openssl libauthen-pam-perl libpam-runtime libio-pty-perl apt-show-versions python
+sudo apt-get install gcc
+sudo apt-get install perl libnet-ssleay-perl openssl libauthen-pam-perl libpam-runtime libio-pty-perl apt-get-show-versions python
 
 echo -e "$Green \n Installing base system, git, man, curl, ruby ... $Color_Off"
-sudo apt -qq install git
-sudo apt -qq install man
-sudo apt -qq install htop
-sudo apt -qq install curl
-sudo apt -qq install ruby-full
-sudo apt -qq install screen
-sudo apt -qq install vim
-sudo apt -qq install sshpass
+sudo apt-get -qq install git
+sudo apt-get -qq install man
+sudo apt-get -qq install htop
+sudo apt-get -qq install curl
+sudo apt-get -qq install ruby-full
+sudo apt-get -qq install screen
+sudo apt-get -qq install vim
+sudo apt-get -qq install sshpass
 
 echo -e "$Green \n Installing apache2, php, mysql... $Color_Off"
 # default version
 MARIADB_VERSION='10.1'
-sudo apt -qq install apache2
-sudo apt -qq install mysql-client
-sudo apt -qq install mariadb-client
-sudo apt -qq install php7.0-fpm
-sudo apt -qq install php7.0-bcmath php7.0-intl php-xdebug php7.0 libapache2-mod-php7.0 php7.0-mcrypt php7.0-curl php7.0-mysql php7.0-gd php7.0-cli php7.0-dev libapache2-mod-fcgid
-sudo apt -qq install phpmyadmin
+sudo apt-get -qq install apache2
+sudo apt-get -qq install mysql-client
+sudo apt-get -qq install mariadb-client
+sudo apt-get -qq install php7.0-fpm
+sudo apt-get -qq install php7.0-bcmath php7.0-intl php-xdebug php7.0 libapache2-mod-php7.0 php7.0-mcrypt php7.0-curl php7.0-mysql php7.0-gd php7.0-cli php7.0-dev libapache2-mod-fcgid
+sudo apt-get -qq install phpmyadmin
 # Install MariaDB without password prompt
 # Set username to 'root' and password to 'mariadb_root_password' (see Vagrantfile)
 sudo debconf-set-selections <<< "maria-db-$MARIADB_VERSION mysql-server/root_password password password"
 sudo debconf-set-selections <<< "maria-db-$MARIADB_VERSION mysql-server/root_password_again password password"
-sudo apt -qq install mariadb-server
+sudo apt-get -qq install mariadb-server
 # Make Maria connectable from outside world without SSH tunnel
 if [ $2 == "true" ]; then
     # enable remote access
@@ -67,13 +67,13 @@ echo "[[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc" >> ~/.zshrc
 phpbrew install 5.4.0 +everything
 
 echo -e "$Green \n Installing mail tools... $Color_Off"
-sudo apt -qq install postfix
-sudo apt -qq install mailutils
-sudo apt -qq install sendmail
-sudo apt -qq install netcat
+sudo apt-get -qq install postfix
+sudo apt-get -qq install mailutils
+sudo apt-get -qq install sendmail
+sudo apt-get -qq install netcat
 
 echo -e "$Green \n Installing zsh... $Color_Off"
-sudo apt -qq install zsh
+sudo apt-get -qq install zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 echo -e "$Green \n Installing node... $Color_Off"
@@ -115,9 +115,9 @@ git config --global user.email "it@covivo.eu"
 
 # Configure vim
 echo -e "$Purple \n Install docker... $Color_Off"
-sudo apt-get install apt-transport-https ca-certificates curl gnupg2 software-properties-common
-curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
-sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
+sudo apt-get install apt-get-transport-https ca-certificates curl gnupg2 software-properties-common
+curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-get-key add -
+sudo add-apt-get-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
 
 
 #Download tools
